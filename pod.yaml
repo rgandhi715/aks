@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: privileged
+spec:
+  securityContext:
+    runAsUser: 2200
+    runAsGroup: 2201
+    fsGroup: 2202
+    supplementalGroups: [2204]
+  containers:
+  - name: nginx-privileged
+    image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
+    securityContext:
+      privileged: false
+      allowPrivilegeEscalation: false
+      runAsUser: 2203
